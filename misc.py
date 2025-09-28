@@ -15,7 +15,7 @@ def load_data():
 		'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']
 
     df = pd.DataFrame(data, columns=feature_names)
-    df['MEDV'] = target # 'MEDV' is the target variable name for Boston
+    df['MEDV'] = target
       
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(
@@ -25,16 +25,12 @@ def load_data():
     return X_train, X_test, y_train, y_test
 
 def evaluate_model(model, X_test, y_test):
-    """Evaluates the model and displays the MSE."""
+    
     predictions = model.predict(X_test)
     mse = mean_squared_error(y_test, predictions)
     print(f"Model Mean Squared Error (MSE): {mse:.4f}")
     return mse
 def run_training_pipeline(model_class):
-    """
-    General function to load data, train a model, and evaluate.
-    Returns: trained model, test data, and MSE
-    """
     print("Loading data...")
     X_train, X_test, y_train, y_test = load_data()
     
