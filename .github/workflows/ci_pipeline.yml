@@ -1,0 +1,33 @@
+name: CI/CD Pipeline - Model Training
+
+# The workflow should ONLY trigger on pushes to the 'kernelr' branch
+on:
+  push:
+    branches:
+      - kernelr
+      
+jobs:
+  train_and_evaluate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Checkout the code (MUST be the branch that triggered the action)
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    # 2. Setup Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' 
+        
+    # 3. Install dependencies from requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    # 4. Run the training script (train2.py for kernelr branch)
+    - name: Run Model Training and Evaluation
+      run: |
+        python train2.py 
