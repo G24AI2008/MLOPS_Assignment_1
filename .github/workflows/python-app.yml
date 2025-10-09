@@ -1,38 +1,33 @@
 name: Python application
 
+# The workflow should ONLY trigger on pushes to the 'kernelr' branch
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - kernelr
+      
 jobs:
-  build:
-
+  train_and_evaluate:
     runs-on: ubuntu-latest
-
+    
     steps:
     # 1. Checkout the code (MUST be the branch that triggered the action)
     - name: Checkout code
-      uses: actions/checkout@v3
-
-       
+      uses: actions/checkout@v4
+      
     # 2. Setup Python environment
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.8' 
+        python-version: '3.x' 
         
     # 3. Install dependencies from requirements.txt
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: List files for dependencies
-      run: ls -al
         
     # 4. Run the training script (train2.py for kernelr branch)
     - name: Run Model Training and Evaluation
       run: |
-        python3 train2.py 
+        python train2.py 
