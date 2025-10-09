@@ -28,6 +28,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: List files for dependencies
+      run: ls -al
         
     # 4. Run the training script (train2.py for kernelr branch)
     - name: Run Model Training and Evaluation
