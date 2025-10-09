@@ -4,7 +4,7 @@ name: Python application
 on:
   push:
     branches:
-      - kernelr
+      - main
       
 jobs:
   train_and_evaluate:
