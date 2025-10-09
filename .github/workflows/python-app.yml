@@ -32,4 +32,4 @@ jobs:
     # 4. Run the training script (train2.py for kernelr branch)
     - name: Run Model Training and Evaluation
       run: |
-        python train2.py 
+        python3 train2.py 
