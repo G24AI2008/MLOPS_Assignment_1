@@ -22,13 +22,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: DEBUG 
-      run: |
-        echo "Current working directory is:"
-        pwd
-        echo "Contents of current dir:"
-        ls -a
-        
+       
     # 2. Setup Python environment
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -37,13 +31,11 @@ jobs:
         
     # 3. Install dependencies from requirements.txt
     - name: Install dependencies
-      working-directory: /home/runner/work/MLOPS_Assignment_1/MLOPS_Assignment_1
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r MLOPS_Assignment_1/requirements.txt
         
     # 4. Run the training script (train2.py for kernelr branch)
     - name: Run Model Training and Evaluation
-      working-directory: /home/runner/work/MLOPS_Assignment_1/MLOPS_Assignment_1
       run: |
-        python train2.py 
+        python MLOPS_Assignment_1/train2.py 
