@@ -30,13 +30,13 @@ jobs:
         
     # 3. Install dependencies from requirements.txt
     - name: Install dependencies
-      working-directory: MLOPS_Assignment_1
+      working-directory: https://github.com/G24AI2008/MLOPS_Assignment_1
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
     # 4. Run the training script (train2.py for kernelr branch)
     - name: Run Model Training and Evaluation
-      working-directory: MLOPS_Assignment_1
+      working-directory: https://github.com/G24AI2008/MLOPS_Assignment_1
       run: |
         python train2.py 
